@@ -1,0 +1,90 @@
+/*----------------------------------------------------------------------------------*\
+|                                                                                    | 
+|    ANSA_VERSION: 14.0.0                                                            | 
+|                                                                                    | 
+|    file created by  A N S A  Tue Aug 23 22:49:13 2016                              | 
+|                                                                                    | 
+|    Output from: D:/work/N304-UAZ-reductor/cae-of/Untitled                          | 
+|                                                                                    | 
+\*----------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class polyBoundaryMesh;
+	location "";
+	object boundary;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+8
+(
+
+	body-wall
+	{
+		type wall;
+		startFace 2220226;
+		nFaces 57724;
+	}
+
+	if_body_wheel
+	{
+		type            cyclicAMI;
+		startFace 2277950;
+		nFaces 4978;
+		matchTolerance  0.0001;
+		transform       noOrdering;
+		neighbourPatch  if_wheel_body;
+	}
+
+	if_body_in_beams1_out
+	{
+		type wall;
+		startFace 2282928;
+		nFaces 100;
+	}
+
+	if_body_out_beams2_in
+	{
+		type wall;
+		startFace 2283028;
+		nFaces 101;
+	}
+
+	if_body_out_beams1_in
+	{
+		type wall;
+		startFace 2283129;
+		nFaces 104;
+	}
+
+	if_body_in_beams2_out
+	{
+		type wall;
+		startFace 2283233;
+		nFaces 104;
+	}
+
+	wheel-wall
+	{
+		type wall;
+		startFace 2283337;
+		nFaces 89981;
+	}
+
+	if_wheel_body
+	{
+		type            cyclicAMI;
+		startFace 2373318;
+		nFaces 64805;
+		matchTolerance  0.0001;
+		transform       noOrdering;
+		neighbourPatch  if_body_wheel;
+	}
+
+)

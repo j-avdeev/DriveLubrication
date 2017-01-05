@@ -1,0 +1,66 @@
+/*----------------------------------------------------------------------------------*\
+|                                                                                    | 
+|    ANSA_VERSION: 14.0.0                                                            | 
+|                                                                                    | 
+|    file created by  A N S A  Mon Aug 15 14:28:13 2016                              | 
+|                                                                                    | 
+|    Output from: D:/work/N304-UAZ-reductor/cae-of/Untitled                          | 
+|                                                                                    | 
+\*----------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      k;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 0.01;
+
+
+boundaryField
+{
+	"if_body_in_beams1_out|if_body_out_beams2_in|if_body_out_beams1_in|if_body_in_beams2_out"
+	{
+		type            fixedValue; //kqRWallFunction;
+		value           $internalField;
+	}
+
+	"if_body_wheel|if_wheel_body"
+	{
+		type            cyclicAMI;
+		value           $internalField;
+	}
+	body-wall
+	{
+		type            fixedValue; //kqRWallFunction;
+		value           $internalField;
+	}
+	
+	wheel-wall
+	{
+		type            fixedValue; //kqRWallFunction;
+		value           $internalField;
+	}
+
+	beam1-wall
+	{
+		type            fixedValue; //kqRWallFunction;
+		value           $internalField;
+	}
+
+	beam2-wall
+	{
+		type            fixedValue; //kqRWallFunction;
+		value           $internalField;
+	}
+
+}

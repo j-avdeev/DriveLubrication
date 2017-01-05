@@ -1,0 +1,79 @@
+/*----------------------------------------------------------------------------------*\
+|                                                                                    | 
+|    ANSA_VERSION: 14.0.0                                                            | 
+|                                                                                    | 
+|    file created by  A N S A  Mon Aug 15 14:28:13 2016                              | 
+|                                                                                    | 
+|    Output from: D:/work/N304-UAZ-reductor/cae-of/Untitled                          | 
+|                                                                                    | 
+\*----------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class volScalarField;
+	location "";
+	object p_rgh;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+dimensions       [1 -1 -2 0 0 0 0];
+
+internalField   uniform 0;//1.25e5;
+
+
+boundaryField
+{
+
+	"if_body_in_beams1_out|if_body_out_beams2_in|if_body_out_beams1_in|if_body_in_beams2_out"
+	{
+// 	  type            fixedFluxPressure;
+// 	  phi             phiAbs;
+// 	  value           uniform 0;
+	  type		zeroGradient;
+	}
+
+	"if_body_wheel|if_wheel_body"
+	{
+		type            cyclicAMI;
+		value           $internalField;
+	}	
+
+	wheel-wall
+	{
+// 	  type            fixedFluxPressure;
+// 	  phi             phiAbs;
+// 	  value           uniform 0;
+	  type		zeroGradient;
+	}
+	
+	body-wall
+	{
+// 	  type            fixedFluxPressure;
+// 	  phi             phiAbs;
+// 	  value           uniform 0;
+	  type		zeroGradient;
+	}
+	
+	beam1-wall
+	{
+// 	  type            fixedFluxPressure;
+// 	  phi             phiAbs;
+// 	  value           uniform 0;
+	  type		zeroGradient;
+	}
+
+	beam2-wall
+	{
+// 	  type            fixedFluxPressure;
+// 	  phi             phiAbs;
+// 	  value           uniform 0;
+	  type		zeroGradient;
+	}
+
+}

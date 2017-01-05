@@ -1,0 +1,67 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       surfaceScalarField;
+    location    "0";
+    object      phi;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 3 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    body-wall
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    if_body_wheel
+    {
+        type            cyclicAMI;
+        value           uniform -0;
+    }
+    if_body_in_beams1_out
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    if_body_out_beams2_in
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    if_body_out_beams1_in
+    {
+        type            calculated;
+        value           uniform -0;
+    }
+    if_body_in_beams2_out
+    {
+        type            calculated;
+        value           uniform -0;
+    }
+    wheel-wall
+    {
+        type            calculated;
+        value           uniform -0;
+    }
+    if_wheel_body
+    {
+        type            cyclicAMI;
+        value           uniform 0;
+    }
+}
+
+
+// ************************************************************************* //
