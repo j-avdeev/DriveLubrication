@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dynamicFvMesh   multiSolidBodyMotionFvMesh;
+
+motionSolverLibs ( "libfvMotionSolvers.so" );
+
+multiSolidBodyMotionFvMeshCoeffs
+{
+    wheel-solid{ // cellZone name here
+// 	cellZone        rotating;
+
+	solidBodyMotionFunction  axisRotationMotion;//rotatingMotion;
+// // 	rotatingMotionCoeffs
+// // 	{
+// // 	    origin        (0 -0.961749 -0.032848);
+// // 	    axis          (0 -0.578898 -0.032848);
+// // 	    omega         0.837758; // -omega_beams*8/37
+// // 	}
+        axisRotationMotionCoeffs
+        {
+            origin (0 -0.961749 -0.032848);
+            radialVelocity (0 -1313.549 0); // [deg/s] -900 (об/мин)/4.111 = -1313.5490 deg/s
+        }	
+    }
+/*    beam1-solid{
+// 	cellZone        rotating;
+
+	solidBodyMotionFunction  rotatingMotion;
+	rotatingMotionCoeffs
+	{
+	    origin        (0.24889 -0.75284 -0.015444);
+	    axis          (0.012918 -0.75284 -0.031945);
+	    omega         0.1;//83.7758; // rad/s = 800 об/мин
+	}
+    }  
+    beam2-solid{
+// 	cellZone        rotating;
+
+	solidBodyMotionFunction  rotatingMotion;
+	rotatingMotionCoeffs
+	{
+	    origin        (0.24889 -0.75284 -0.015444);
+	    axis          (0.012918 -0.75284 -0.031945);
+	    omega         0.1;//83.7758; // rad/s = 800 об/мин
+	}
+    }  */  
+}
+
+
+// ************************************************************************* //
